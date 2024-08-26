@@ -1,10 +1,13 @@
 package com.makersharks.search_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Supplier {
     @Id
@@ -16,6 +19,10 @@ public class Supplier {
     private String natureOfBusiness;
     private String manufacturingProcesses;
 
+    public Supplier() {
+        // Default constructor
+    }
+    
 
     public Long getId() {
         return id;
@@ -64,4 +71,15 @@ public class Supplier {
     public void setManufacturingProcesses(String manufacturingProcesses) {
         this.manufacturingProcesses = manufacturingProcesses;
     }
+
+    public Supplier(String companyName, String website, String location, String natureOfBusiness, String manufacturingProcesses) {
+        this.companyName = companyName;
+        this.website = website;
+        this.location = location;
+        this.natureOfBusiness = natureOfBusiness;
+        this.manufacturingProcesses = manufacturingProcesses;
+    }
+    
+    
+    
 }
